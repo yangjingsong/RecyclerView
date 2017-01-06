@@ -1,4 +1,4 @@
-package com.yjs.recyclerview;
+package com.yjs.recyclerview.adapter;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -14,6 +14,10 @@ import android.view.animation.TranslateAnimation;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.yjs.recyclerview.ChannelEntity;
+import com.yjs.recyclerview.OnItemMovedListener;
+import com.yjs.recyclerview.R;
 
 import java.util.List;
 
