@@ -7,6 +7,7 @@ import android.view.View;
 
 import com.yjs.recyclerview.activity.ItemDirectionActivity;
 import com.yjs.recyclerview.activity.ItemTouchHelperActivity;
+import com.yjs.recyclerview.activity.LayoutManagerActivity;
 
 public class FirstActivity extends AppCompatActivity {
 
@@ -24,6 +25,12 @@ public class FirstActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(FirstActivity.this, ItemDirectionActivity.class));
+            }
+        });
+        findViewById(R.id.btn3).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(FirstActivity.this, LayoutManagerActivity.class));
             }
         });
     }

@@ -79,7 +79,6 @@ public class StickyDirection extends RecyclerView.ItemDecoration {
             return;
         }
 
-        //flag指示当标题栏是否发生碰撞（如开头gif图中指示的）
         boolean flag = false;
         if (getTag(position + 1) != null && !initial.equals(getTag(position + 1))) {
             if (child.getHeight() + child.getTop() < height) {
