@@ -12,7 +12,7 @@ import com.yjs.recyclerview.R;
 import java.util.List;
 
 /**
- * Created by yangjingsong on 17/1/4.
+ * Created by yangjingsong on 17/p1/4.
  */
 
 public class CityAdapter extends RecyclerView.Adapter {

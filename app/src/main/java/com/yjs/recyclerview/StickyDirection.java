@@ -14,7 +14,7 @@ import android.view.View;
 import java.util.List;
 
 /**
- * Created by yangjingsong on 17/1/3.
+ * Created by yangjingsong on 17/p1/3.
  */
 
 public class StickyDirection extends RecyclerView.ItemDecoration {
@@ -100,10 +100,10 @@ public class StickyDirection extends RecyclerView.ItemDecoration {
         }
 //        int position = ((LinearLayoutManager)(parent.getLayoutManager())).findFirstVisibleItemPosition();
 //        String text = channelList.get(position).getLetter();
-//        String nextText = channelList.get(position+1).getLetter();
+//        String nextText = channelList.get(position+p1).getLetter();
 //        int stickyTop =0;
 //        if(!text.equals(nextText)){
-//            View nextView = ((LinearLayoutManager)(parent.getLayoutManager())).findViewByPosition(position+1);
+//            View nextView = ((LinearLayoutManager)(parent.getLayoutManager())).findViewByPosition(position+p1);
 //            int nextTop = nextView.getTop();
 //            Log.d("nextTop",nextTop+"");
 //            stickyTop = height-nextTop;

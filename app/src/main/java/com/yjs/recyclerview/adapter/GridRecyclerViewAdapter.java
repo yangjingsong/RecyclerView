@@ -22,7 +22,7 @@ import com.yjs.recyclerview.R;
 import java.util.List;
 
 /**
- * Created by yangjingsong on 17/1/3.
+ * Created by yangjingsong on 17/p1/3.
  */
 
 public class GridRecyclerViewAdapter extends RecyclerView.Adapter implements OnItemMovedListener {

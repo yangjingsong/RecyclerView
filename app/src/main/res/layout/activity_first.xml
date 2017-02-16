@@ -30,4 +30,11 @@
         android:text="Layout_Manager"
         />
 
+    <Button
+        android:id="@+id/btn4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Base_Adapter"
+        />
+
 </LinearLayout>

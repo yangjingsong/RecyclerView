@@ -1,10 +1,13 @@
 package com.yjs.recyclerview;
 
+import com.yjs.recyclerview.baseadapter.TypeFactory;
+import com.yjs.recyclerview.baseadapter.Visitable;
+
 /**
- * Created by yangjingsong on 17/1/3.
+ * Created by yangjingsong on 17/p1/3.
  */
 
-public class ChannelEntity {
+public class ChannelEntity implements Visitable{
     int id;
     String name;
     String letter;
@@ -31,5 +34,10 @@ public class ChannelEntity {
 
     public void setLetter(String letter) {
         this.letter = letter;
+    }
+
+    @Override
+    public int type(TypeFactory typeFactory) {
+        return typeFactory.type(this);
     }
 }

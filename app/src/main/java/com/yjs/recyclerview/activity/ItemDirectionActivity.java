@@ -4,8 +4,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import com.yjs.recyclerview.ChannelEntity;
+import com.yjs.recyclerview.EntityTwo;
 import com.yjs.recyclerview.R;
 import com.yjs.recyclerview.StickyDirection;
 import com.yjs.recyclerview.adapter.CityAdapter;
@@ -17,6 +19,7 @@ public class ItemDirectionActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
 
+    int a=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,10 +69,29 @@ public class ItemDirectionActivity extends AppCompatActivity {
 
 
 
+
+
         CityAdapter cityAdapter = new CityAdapter(cities);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(cityAdapter);
         recyclerView.addItemDecoration(new StickyDirection(cities,this));
+
+        Thread thread = new Thread(){
+            @Override
+            public void run() {
+                for (int i=0;i<5;i++){
+                    a++;
+                }
+            }
+        };
+        thread.start();
+        try {
+            thread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        Log.d("a",a+"");
+
 
 
     }

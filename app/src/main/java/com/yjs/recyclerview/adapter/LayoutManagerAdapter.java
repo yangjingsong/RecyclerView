@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.yjs.recyclerview.R;
 
 /**
- * Created by yangjingsong on 17/1/9.
+ * Created by yangjingsong on 17/p1/9.
  */
 
 public class LayoutManagerAdapter extends RecyclerView.Adapter<LayoutManagerAdapter.MyViewHolder> {

@@ -4,4 +4,6 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
 
     <dimen name="top">40dp</dimen>
+
+    <dimen name="default_margin">10dp</dimen>
 </resources>

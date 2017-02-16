@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 /**
- * Created by yangjingsong on 17/1/9.
+ * Created by yangjingsong on 17/p1/9.
  */
 
 public class MyLayoutManager extends RecyclerView.LayoutManager {
@@ -53,6 +53,7 @@ public class MyLayoutManager extends RecyclerView.LayoutManager {
             if (frame == null) {
                 frame = new Rect();
             }
+            //保存每个View的边界rect
             frame.set(0, offSetY, width, offSetY + height);
             allItemFrames.put(i, frame);
         }
@@ -63,13 +64,14 @@ public class MyLayoutManager extends RecyclerView.LayoutManager {
         if (state.isPreLayout()) {
             return;
         }
+        //当前屏幕显示的区域
         Rect displayFrame = new Rect(0, verticalScrollOffset, getHorizontalSpace(), verticalScrollOffset + getVerticalSpace());
 
         //将滑出屏幕的View进行回收
         Rect childFrame = new Rect();
         for (int i = 0; i < getItemCount(); i++) {
             View child = getChildAt(i);
-            if(child!=null){
+            if (child != null) {
                 childFrame.left = getDecoratedLeft(child);
                 childFrame.top = getDecoratedTop(child);
                 childFrame.right = getDecoratedRight(child);
@@ -86,6 +88,7 @@ public class MyLayoutManager extends RecyclerView.LayoutManager {
             if (Rect.intersects(displayFrame, allItemFrames.get(i))) {
                 View scrap = recycler.getViewForPosition(i);
                 measureChildWithMargins(scrap, 0, 0);
+                //scrap.setTranslationX(getWidth()/2);
                 addView(scrap);
                 Rect frame = allItemFrames.get(i);
                 layoutDecorated(scrap, frame.left, frame.top - verticalScrollOffset, frame.right, frame.bottom - verticalScrollOffset);
@@ -102,13 +105,16 @@ public class MyLayoutManager extends RecyclerView.LayoutManager {
     public int scrollVerticallyBy(int dy, RecyclerView.Recycler recycler, RecyclerView.State state) {
         detachAndScrapAttachedViews(recycler);
         int realScrollDistance = dy;
-        if (verticalScrollOffset + dy < 0) {
+        //边界修复
+        if (verticalScrollOffset + dy < 0) {//上边界
             realScrollDistance = -verticalScrollOffset;
-        } else if (verticalScrollOffset + dy > totalHeight - getVerticalSpace()) {
+        } else if (verticalScrollOffset + dy > totalHeight - getVerticalSpace()) {//下边界
             realScrollDistance = totalHeight - getVerticalSpace() - verticalScrollOffset;
         }
         verticalScrollOffset += realScrollDistance;
+        //移动子View
         offsetChildrenVertical(-realScrollDistance);
+        //填充数据
         recycleAndFillItems(recycler, state);
         return realScrollDistance;
     }

@@ -6,7 +6,7 @@ import android.view.View;
 
 
 /**
- * Created by yangjingsong on 17/1/6.
+ * Created by yangjingsong on 17/p1/6.
  */
 
 public abstract class BaseViewHolder<T> extends RecyclerView.ViewHolder {
@@ -29,4 +29,12 @@ public abstract class BaseViewHolder<T> extends RecyclerView.ViewHolder {
     }
 
     public abstract void setUpView(T model,int position);
+
+    public void setVisible(int resId,boolean visible){
+        View  view= getView(resId);
+        if(view !=null){
+            view.setVisibility(visible?View.VISIBLE:View.GONE);
+        }
+
+    }
 }

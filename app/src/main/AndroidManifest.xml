@@ -17,7 +17,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.ItemDirectionActivity" />
-        <activity android:name=".activity.LayoutManagerActivity"></activity>
+        <activity android:name=".activity.LayoutManagerActivity" />
+        <activity android:name=".tantan.TanActivity" />
+        <activity android:name=".activity.BaseAdapterActivity"></activity>
     </application>
 
 </manifest>
