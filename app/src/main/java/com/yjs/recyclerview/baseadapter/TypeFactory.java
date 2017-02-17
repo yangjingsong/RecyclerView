@@ -10,7 +10,7 @@ import com.yjs.recyclerview.EntityTwo;
  */
 
 public interface TypeFactory {
-    com.yjs.recyclerview.adapter.BaseViewHolder createViewHolder(int type, View itemView);
+    BaseViewHolder createViewHolder(int type, View itemView);
     int type(ChannelEntity channelEntity);
     int type(EntityTwo entityTwo);
 }

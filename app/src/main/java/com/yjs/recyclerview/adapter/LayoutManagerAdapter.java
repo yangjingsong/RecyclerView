@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.yjs.recyclerview.R;
+import com.yjs.recyclerview.baseadapter.BaseViewHolder;
 
 /**
  * Created by yangjingsong on 17/p1/9.
@@ -31,7 +32,7 @@ public class LayoutManagerAdapter extends RecyclerView.Adapter<LayoutManagerAdap
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
 
-        holder.setUpView(array.get(position),position);
+        holder.bindData(array.get(position));
     }
 
     @Override
@@ -39,16 +40,18 @@ public class LayoutManagerAdapter extends RecyclerView.Adapter<LayoutManagerAdap
         return array.size();
     }
 
-    static class MyViewHolder extends BaseViewHolder<String>{
+    static class MyViewHolder extends BaseViewHolder<String> {
 
         public MyViewHolder(View itemView) {
             super(itemView);
         }
 
         @Override
-        public void setUpView(String model, int position) {
+        public void bindData(String data) {
             TextView textView = (TextView) getView(R.id.tv);
-            textView.setText(model);
+            textView.setText(data);
         }
+
+
     }
 }

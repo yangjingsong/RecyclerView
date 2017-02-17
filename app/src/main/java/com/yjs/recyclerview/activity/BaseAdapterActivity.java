@@ -1,5 +1,6 @@
 package com.yjs.recyclerview.activity;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -24,7 +25,7 @@ public class BaseAdapterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_base_adapter);
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        BaseRecyclerAdapter adapter = new BaseRecyclerAdapter(this);
+        MyAdapter adapter = new MyAdapter(this);
         recyclerView.setAdapter(adapter);
 
         View headerView = LayoutInflater.from(this).inflate(R.layout.item_other,null);
@@ -81,7 +82,33 @@ public class BaseAdapterActivity extends AppCompatActivity {
         cities.add(16,channelEntity4);
         EntityTwo entityTwo = new EntityTwo();
         cities.add(17,entityTwo);
-        adapter.loadData(cities);
+        adapter.refreshData(cities);
+
+//        List<BaseModel> models = new ArrayList<>();
+//        Adapter adapter1 = new Adapter(this);
+//        adapter1.loadData(models);
 
     }
+
+    private class MyAdapter extends BaseRecyclerAdapter<BaseModel>{
+
+        public MyAdapter(Context context) {
+            super(context);
+        }
+
+        @Override
+        public boolean areItemsTheSame(int oldItemPosition, int newItemPosition, List<BaseModel> oldData, List<BaseModel> newData) {
+            return false;
+
+
+        }
+
+        @Override
+        public boolean areContentsTheSame(int oldItemPosition, int newItemPosition, List<BaseModel> oldData, List<BaseModel> newData) {
+            return false;
+        }
+    }
+
+
+
 }

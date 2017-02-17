@@ -3,8 +3,8 @@ package com.yjs.recyclerview.baseadapter;
 import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
 
-import com.yjs.recyclerview.adapter.*;
-import com.yjs.recyclerview.adapter.BaseViewHolder;
+
+
 
 /**
  * Created by yangjingsong on 17/2/16.
@@ -27,7 +27,7 @@ public abstract class LoadMoreView {
         return mLoadMoreStatus;
     }
 
-    public void changeStatus(com.yjs.recyclerview.adapter.BaseViewHolder holder){
+    public void changeStatus(BaseViewHolder holder){
         switch (mLoadMoreStatus) {
             case STATUS_LOADING:
                 visibleLoading(holder, true);
@@ -55,16 +55,16 @@ public abstract class LoadMoreView {
     }
 
     private void visibleLoading(BaseViewHolder holder,boolean visible){
-        holder.setVisible(getLoadingViewId(),visible);
+        holder.setVisibility(getLoadingViewId(),visible);
     }
     private void visibleLoadFail(BaseViewHolder holder, boolean visible) {
-        holder.setVisible(getLoadFailViewId(), visible);
+        holder.setVisibility(getLoadFailViewId(), visible);
     }
 
     private void visibleLoadEnd(BaseViewHolder holder, boolean visible) {
         final int loadEndViewId=getLoadEndViewId();
         if (loadEndViewId != 0) {
-            holder.setVisible(loadEndViewId, visible);
+            holder.setVisibility(loadEndViewId, visible);
         }
     }
 

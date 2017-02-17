@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.yjs.recyclerview.ChannelEntity;
 import com.yjs.recyclerview.R;
+import com.yjs.recyclerview.baseadapter.BaseViewHolder;
 
 import java.util.List;
 
@@ -52,17 +53,19 @@ public class CityAdapter extends RecyclerView.Adapter {
         }
     }
 
-    static class MyCityViewHolder extends BaseViewHolder<ChannelEntity>{
+    static class MyCityViewHolder extends BaseViewHolder<ChannelEntity> {
 
         public MyCityViewHolder(View itemView) {
             super(itemView);
         }
 
         @Override
-        public void setUpView(ChannelEntity model, int position) {
+        public void bindData(ChannelEntity data) {
             TextView textView = (TextView) getView(R.id.tv);
-            textView.setText(model.getName());
+            textView.setText(data.getName());
 
         }
+
+
     }
 }

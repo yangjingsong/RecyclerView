@@ -27,5 +27,12 @@ public abstract class BaseViewHolder<T> extends RecyclerView.ViewHolder{
         return view;
     }
 
+    public void setVisibility(int resId,boolean visible){
+        View view = getView(resId);
+        if(view!=null){
+            view.setVisibility(visible?View.VISIBLE:View.GONE);
+        }
+    }
+
     public abstract void bindData(T data);
 }

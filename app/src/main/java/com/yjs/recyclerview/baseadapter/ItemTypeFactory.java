@@ -5,7 +5,7 @@ import android.view.View;
 import com.yjs.recyclerview.ChannelEntity;
 import com.yjs.recyclerview.EntityTwo;
 import com.yjs.recyclerview.R;
-import com.yjs.recyclerview.adapter.BaseViewHolder;
+
 
 /**
  * Created by yangjingsong on 17/2/13.

@@ -1,13 +1,14 @@
 package com.yjs.recyclerview.baseadapter;
 
 import android.content.Context;
+import android.support.v7.util.DiffUtil;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import com.yjs.recyclerview.adapter.BaseViewHolder;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +17,7 @@ import java.util.List;
  * Created by yangjingsong on 17/2/16.
  */
 
-public class BaseRecyclerAdapter<T extends BaseModel> extends RecyclerView.Adapter<BaseViewHolder> {
+public abstract class BaseRecyclerAdapter<T extends BaseModel> extends RecyclerView.Adapter<BaseViewHolder> {
     List<T> mData;
     public static final int TYPE_FOOTER = 100;
     public static final int TYPE_HEADER = 101;
@@ -67,7 +68,7 @@ public class BaseRecyclerAdapter<T extends BaseModel> extends RecyclerView.Adapt
                 loadMoreView.changeStatus(holder);
                 break;
             default:
-                holder.setUpView(mData.get(getRealPosition(position)), position);
+                holder.bindData(mData.get(getRealPosition(position)));
         }
 
 
@@ -77,9 +78,11 @@ public class BaseRecyclerAdapter<T extends BaseModel> extends RecyclerView.Adapt
         View view =LayoutInflater.from(parent.getContext()).inflate(loadMoreView.getLayoutId(),parent,false);
         return new BaseViewHolder(view) {
             @Override
-            public void setUpView(Object model, int position) {
+            public void bindData(Object data) {
 
             }
+
+
         };
 
     }
@@ -145,9 +148,11 @@ public class BaseRecyclerAdapter<T extends BaseModel> extends RecyclerView.Adapt
     private BaseViewHolder createBaseViewHolder(View view) {
         return new BaseViewHolder(view) {
             @Override
-            public void setUpView(Object model, int position) {
+            public void bindData(Object data) {
 
             }
+
+
         };
     }
 
@@ -157,9 +162,22 @@ public class BaseRecyclerAdapter<T extends BaseModel> extends RecyclerView.Adapt
     }
 
     public void refreshData(List<T> mData){
+
+        DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(new DiffCallBack<T>(this.mData,mData) {
+            @Override
+            public boolean areItemsTheSame(int oldItemPosition, int newItemPosition, List<T> oldData, List<T> newData) {
+                return areItemsTheSame(oldItemPosition,newItemPosition,oldData,newData);
+            }
+
+            @Override
+            public boolean areContentsTheSame(int oldItemPosition, int newItemPosition, List<T> oldData, List<T> newData) {
+                return areContentsTheSame(oldItemPosition,newItemPosition,oldData,newData);
+            }
+        });
+        diffResult.dispatchUpdatesTo(this);
         this.mData.clear();
-        this.mData.addAll(mData) ;
-        notifyDataSetChanged();
+        this.mData.addAll(mData);
+        //notifyDataSetChanged();
     }
 
     public void setNeedLoading(boolean needLoading) {
@@ -173,4 +191,11 @@ public class BaseRecyclerAdapter<T extends BaseModel> extends RecyclerView.Adapt
     public void setLoadMoreView(LoadMoreView loadMoreView) {
         this.loadMoreView = loadMoreView;
     }
+
+    public abstract boolean areItemsTheSame(int oldItemPosition, int newItemPosition,List<T> oldData,List<T> newData);
+
+    public abstract boolean areContentsTheSame(int oldItemPosition, int newItemPosition,List<T> oldData,List<T> newData);
+
+
+
 }

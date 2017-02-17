@@ -8,7 +8,7 @@ import com.yjs.recyclerview.baseadapter.BaseModel;
  * Created by yangjingsong on 17/2/13.
  */
 
-public class EntityTwo implements BaseModel {
+public class EntityTwo extends BaseModel {
     @Override
     public int type(TypeFactory typeFactory) {
         return typeFactory.type(this);

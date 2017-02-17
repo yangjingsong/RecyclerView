@@ -11,14 +11,15 @@ import com.yjs.recyclerview.adapter.*;
  * Created by yangjingsong on 17/2/13.
  */
 
-public class ViewHolderOne extends com.yjs.recyclerview.adapter.BaseViewHolder<ChannelEntity> {
+public class ViewHolderOne extends BaseViewHolder<ChannelEntity> {
     public ViewHolderOne(View itemView) {
         super(itemView);
     }
 
     @Override
-    public void setUpView(ChannelEntity model, int position) {
+    public void bindData(ChannelEntity data) {
         TextView textView = (TextView) getView(R.id.tv);
-        textView.setText(model.getName());
+        textView.setText(data.getName());
     }
+
 }
