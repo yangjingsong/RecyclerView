@@ -1,4 +1,4 @@
-package com.yjs.recyclerview.baseviewholder;
+package com.yjs.recyclerview.baseadapter;
 
 import android.view.View;
 import android.widget.TextView;
@@ -19,6 +19,7 @@ public class ViewHolderTwo extends com.yjs.recyclerview.adapter.BaseViewHolder<E
     @Override
     public void setUpView(EntityTwo model, int position) {
         TextView textView = (TextView) getView(R.id.tv);
+        textView.setText("我是另一种布局");
 
 
 

@@ -1,4 +1,4 @@
-package com.yjs.recyclerview.baseviewholder;
+package com.yjs.recyclerview.baseadapter;
 
 import android.view.View;
 import android.widget.TextView;

@@ -2,7 +2,6 @@ package com.yjs.recyclerview.baseadapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,12 +9,15 @@ import android.widget.LinearLayout;
 
 import com.yjs.recyclerview.adapter.BaseViewHolder;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by yangjingsong on 17/2/16.
  */
 
-public class BaseRecyclerAdapter extends RecyclerView.Adapter<BaseViewHolder> {
-    SparseArray<Visitable> mData;
+public class BaseRecyclerAdapter<T extends BaseModel> extends RecyclerView.Adapter<BaseViewHolder> {
+    List<T> mData;
     public static final int TYPE_FOOTER = 100;
     public static final int TYPE_HEADER = 101;
     public static final int TYPE_LOADING = 102;
@@ -26,6 +28,7 @@ public class BaseRecyclerAdapter extends RecyclerView.Adapter<BaseViewHolder> {
     LoadMoreView loadMoreView;
 
     public BaseRecyclerAdapter(Context context) {
+        mData = new ArrayList<>();
         itemTypeFactory = new ItemTypeFactory();
         mHeaderLayout = new LinearLayout(context);
         mHeaderLayout.setLayoutParams(new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
@@ -148,8 +151,14 @@ public class BaseRecyclerAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         };
     }
 
-    public void setmData(SparseArray<Visitable> mData) {
-        this.mData = mData;
+    public void loadData(List<T> mData) {
+        this.mData.addAll(mData) ;
+        notifyDataSetChanged();
+    }
+
+    public void refreshData(List<T> mData){
+        this.mData.clear();
+        this.mData.addAll(mData) ;
         notifyDataSetChanged();
     }
 

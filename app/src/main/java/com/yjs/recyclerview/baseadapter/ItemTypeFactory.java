@@ -7,9 +7,6 @@ import com.yjs.recyclerview.EntityTwo;
 import com.yjs.recyclerview.R;
 import com.yjs.recyclerview.adapter.BaseViewHolder;
 
-import com.yjs.recyclerview.baseviewholder.ViewHolderOne;
-import com.yjs.recyclerview.baseviewholder.ViewHolderTwo;
-
 /**
  * Created by yangjingsong on 17/2/13.
  */
